@@ -3,6 +3,6 @@ import Header from "../components/Header";
 
 export default () => <>
     <Header />
-        Hello World!
+    HELLO WORLD!
     <Footer />
 </>

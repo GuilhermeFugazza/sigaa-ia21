@@ -1,14 +1,34 @@
+import { styled } from "styled-components";
+import LoginForm from "../components/LoginForm";
+
+const Container = styled.div`
+    background-color: #435865;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: " ";
+        background-color: #243238;
+        width: 90%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        transform: skew(15deg) translateX(50%);
+        box-shadow: -2px -2px 5px #000000;
+    }
+
+    > * {
+        position: relative;
+        z-index: 9;
+    }
+`
+
 export default () => <>
-        <form className="bg-red-500">
-            <div>
-                <label>Login</label>
-                <input name="login" />
-            </div>
-            <div>
-                <label>Senha</label>
-                <input name="Senha" />
-            </div>
-            <button>Entrar</button>
-            <button>Esqueci minha senha</button>
-        </form>
+    <Container>
+        <LoginForm />
+    </Container>
 </>
