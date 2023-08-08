@@ -90,23 +90,10 @@ const AccentButton = styled.button`
     cursor: pointer;
 `
 
-const HiddenButton = styled.button`
-    border: 0 none;
-    color: #222222;
-    background-color: transparent;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-`
-
 export default () => <>
     <MyForm>
         <div className="container">
             <div className="title">
-                <h1>Welcome</h1>
-                <h2>Bem vindo, bien venido, willkommen</h2>
             </div>
             <div className="input">
                 <label>Login</label>
@@ -117,12 +104,10 @@ export default () => <>
                 <input type="password" name="password" />
             </div>
             <div className="action">
-              <AccentButton>Entrar</AccentButton>
-              <HiddenButton>Recuperar senha</HiddenButton>
+              <AccentButton>
+                <Link to="/home">Entrar</Link>
+            </AccentButton>
             </div>
-        </div>
-        <div className="sign-up">
-            É a sua primeira vez aqui, <Link to="/signup">cadastre-se!</Link>
         </div>
     </MyForm>
 </>
