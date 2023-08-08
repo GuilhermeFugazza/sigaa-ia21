@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import SignUpForm from "../components/SignUpForm";
 
 const Container = styled.div`
-    background-color: #435865;
+    background-color: #d1d1d1;
     height: 100vh;
     display: grid;
     place-content: center;
@@ -11,14 +11,14 @@ const Container = styled.div`
 
     &::after {
         content: " ";
-        background-color: #243238;
+        background-color: #00bd6e9d;
         width: 90%;
         height: 100%;
         position: absolute;
         right: 0;
         z-index: 1;
         transform: skew(15deg) translateX(50%);
-        box-shadow: -2px -2px 5px #000000;
+        box-shadow: -5px -5px 10px #000000;
     }
 
     > * {
@@ -26,7 +26,6 @@ const Container = styled.div`
         z-index: 9;
     }
 `
-
 export default () => <>
     <Container>
         <SignUpForm />

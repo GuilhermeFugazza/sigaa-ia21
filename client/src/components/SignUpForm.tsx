@@ -8,7 +8,7 @@ const MyForm = styled.form`
     font-family: 'Hind Madurai', sans-serif;
     border: 1px solid #D4D4D4;
     box-shadow: 2px 2px 2px -1px #0000007d;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: inline-block;
     color: #1f1f1f;
 
@@ -30,9 +30,12 @@ const MyForm = styled.form`
             }
 
             h2 {
-                font-size: 60%;
+                font-size: 70%;
                 color: #323232;
                 font-weight: 300;
+                margin-top: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: solid 1px #D4D4D4;
             }
         }
 
@@ -54,7 +57,7 @@ const MyForm = styled.form`
                 border-bottom: 1px solid #D4D4D4;
                 outline: none;
                 width: 100%;
-                padding: .5rem;
+                padding: .3rem;
             }
         }
 
@@ -78,10 +81,16 @@ const MyForm = styled.form`
             text-decoration: none;
         }
     }
+
+    .txtCadastrar {
+        text-decoration: none;
+        color: #4d4d4d;
+        
+    }
 `
 
 const AccentButton = styled.button`
-    border: 3px solid #ec017e;
+    border: 3px solid #01c52c;
     color: #ec017e;
     background-color: transparent;
     font-size: 1.25rem;
@@ -94,6 +103,16 @@ export default () => <>
     <MyForm>
         <div className="container">
             <div className="title">
+                <h1>Register</h1>
+                <h2>IFC Registration field</h2>
+            </div>
+            <div className="input">
+                <label>Nome completo</label>
+                <input name="nome" />
+            </div>
+            <div className="input">
+                <label>Email</label>
+                <input name="email" />
             </div>
             <div className="input">
                 <label>Login</label>
@@ -103,10 +122,8 @@ export default () => <>
                 <label>Senha</label>
                 <input type="password" name="password" />
             </div>
-            <div className="action">
-              <AccentButton>
-                <Link to="/home">Entrar</Link>
-            </AccentButton>
+            <div className="action">              
+                <AccentButton><Link to="/" className="txtCadastrar">Cadastrar</Link></AccentButton>
             </div>
         </div>
     </MyForm>

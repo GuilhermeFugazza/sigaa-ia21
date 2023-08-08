@@ -33,6 +33,7 @@ const MyForm = styled.form`
                 font-size: 60%;
                 color: #323232;
                 font-weight: 300;
+                margin-top: 1rem
             }
         }
 
@@ -71,21 +72,26 @@ const MyForm = styled.form`
         background-color: #f3f3f3;
         padding: 2rem;
         color: #a4a4a4;
-        font-size: 90%;
+        font-size: 75%;
 
         a {
             color: #ec017e;
             text-decoration: none;
         }
     }
+
+    .txtEntrar {
+        text-decoration: none;
+        color: #4d4d4d;
+    }
 `
 
 const AccentButton = styled.button`
-    border: 3px solid #ec017e;
+    border: 3px solid #01c52c;
     color: #ec017e;
     background-color: transparent;
     font-size: 1.25rem;
-    padding: 1rem;
+    padding: 0rem 1rem 0rem 1rem;
     border-radius: 5px;
     cursor: pointer;
 `
@@ -94,7 +100,7 @@ const HiddenButton = styled.button`
     border: 0 none;
     color: #222222;
     background-color: transparent;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
     padding: 1rem;
     border-radius: 5px;
@@ -106,7 +112,7 @@ export default () => <>
         <div className="container">
             <div className="title">
                 <h1>Welcome</h1>
-                <h2>Bem vindo, bien venido, willkommen</h2>
+                <h2>To the Federal Institute of Santa Catarina</h2>
             </div>
             <div className="input">
                 <label>Login</label>
@@ -117,12 +123,12 @@ export default () => <>
                 <input type="password" name="password" />
             </div>
             <div className="action">
-              <AccentButton>Entrar</AccentButton>
-              <HiddenButton>Recuperar senha</HiddenButton>
+              <AccentButton><Link to="/home" className="txtEntrar">Entrar</Link></AccentButton>
+              <HiddenButton>Esqueci minha senha!</HiddenButton>
             </div>
         </div>
         <div className="sign-up">
-            É a sua primeira vez aqui, <Link to="/signup">cadastre-se!</Link>
+            Não tem uma conta? <Link to="/signup">cadastre-se!</Link>
         </div>
     </MyForm>
 </>
