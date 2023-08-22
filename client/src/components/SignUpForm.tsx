@@ -104,7 +104,7 @@ export default () => <>
         <div className="container">
             <div className="title">
                 <h1>Register</h1>
-                <h2>IFC Registration field</h2>
+                <h2>PetroLator Registration field</h2>
             </div>
             <div className="input">
                 <label>Nome completo</label>

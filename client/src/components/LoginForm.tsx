@@ -7,7 +7,7 @@ const MyForm = styled.form`
     font-family: 'Anton', sans-serif;
     font-family: 'Hind Madurai', sans-serif;
     border: 1px solid #D4D4D4;
-    box-shadow: 2px 2px 2px -1px #0000007d;
+    box-shadow: 1px 1px 1px -1px #2929297c;
     font-size: 1.5rem;
     display: inline-block;
     color: #1f1f1f;
@@ -112,7 +112,7 @@ export default () => <>
         <div className="container">
             <div className="title">
                 <h1>Welcome</h1>
-                <h2>To the Federal Institute of Santa Catarina</h2>
+                <h2>To the PetroLator</h2>
             </div>
             <div className="input">
                 <label>Login</label>

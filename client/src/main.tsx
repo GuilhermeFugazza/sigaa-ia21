@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './templates/Home.tsx'
+import Home from './templates/Calculator.tsx'
 import Login from './templates/Login.tsx'
 import NotFound from './templates/NotFound.tsx'
 import SignUp from './templates/SignUp.tsx'
