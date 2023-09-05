@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import CalcForm from "../components/CalculatorForm";
+import { Link } from "react-router-dom"
 // import Header from "../components/Header";
 // import Footer from "../components/Footer";
 
@@ -27,10 +27,31 @@ const Container = styled.div`
         position: relative;
         z-index: 9;
     }
+
+    .divButton{
+        padding: 1vw;
+        outline: none;
+    }
+`
+const AccentButton = styled.button`
+    border: 3px solid #01c52c;
+    color: #ec017e;
+    background-color: #66c266;
+    font-size: 1.25rem;
+    padding: 0rem 1rem 0rem 1rem;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    padding: 1vw;
 `
 
 export default () => <>
     <Container>
-        <CalcForm />
+        <div className="divButton">
+            <AccentButton><Link to="/calculator" className="txtEntrar">Calculator</Link></AccentButton>
+        </div>
+        <div className="divButton"> 
+            <AccentButton><Link to="/todolist" className="txtEntrar">ToDoList</Link></AccentButton>
+        </div>
     </Container>
 </>

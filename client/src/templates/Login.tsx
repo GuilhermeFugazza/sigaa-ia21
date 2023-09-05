@@ -11,7 +11,7 @@ const Container = styled.div`
 
     &::after {
         content: " ";
-        background-color: #00bd6e9d;
+        background-color: #5efaff78;
         width: 90%;
         height: 100%;
         position: absolute;
