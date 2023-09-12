@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 // import Header from "../components/Header";
 // import Footer from "../components/Footer";
 
@@ -29,7 +29,7 @@ const Container = styled.div`
     }
 `
 
-const MyForm = styled.form`
+const Mydiv = styled.div`
 :root {
     font-family: sans-serif;
     line-height: 1.5;
@@ -38,12 +38,6 @@ const MyForm = styled.form`
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
-  
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
   }
   
   a {
@@ -71,9 +65,15 @@ const MyForm = styled.form`
     line-height: 1.1;
   }
 
+  strong {
+    te
+  }
+
   .containerDiv {
     padding: 1vw 2vw 2vw 2vw;
     background-color: white;
+    display: grid;
+    place-content: center;
   }
   
   span {
@@ -174,17 +174,35 @@ const MyForm = styled.form`
   `
 
 export default function App() {
-  const [input, setInput] = useState("");
-  const [tarefas, setTarefas] = useState<String[]>([
-    'Furar o pneu do homi'
-  ])
+
+  const inputRef = useRef<HTMLInputElement>(null)
+  const firstR = useRef(true)
+  const [input, setInput] = useState("")
+  const [tarefas, setTarefas] = useState<string[]>([])
 
   const [editarTarefa, setEditarTarefa] = useState({
     enabled: false,
     tarefa: ''
   })
 
-  function registrar() {
+  useEffect(() => {
+    const tarefaSalva = localStorage.getItem("@cursoreact")
+    if(tarefaSalva){
+      setTarefas(JSON.parse(tarefaSalva))
+    }
+  }, [])
+
+  useEffect(() => {
+    if(firstR.current){
+      firstR.current=false
+      return
+    }
+    localStorage.setItem("@cursoreact", JSON.stringify(tarefas))
+    console.log("useEffect usado")
+  }, [tarefas])
+
+
+  const registrar = useCallback() {
     if (!input) {
       alert("Preencha o nome da sua tarefa")
       return;
@@ -197,7 +215,6 @@ export default function App() {
 
     setTarefas(tarefas => [...tarefas, input])
     setInput("")
-    localStorage.setItem("@cursoreact", JSON.stringify([... tarefas, input]))
   }
 
   function editarTarefaSalva() {
@@ -211,16 +228,14 @@ export default function App() {
       tarefa: ''
     })
     setInput("")
-    localStorage.setItem("@cursoreact", JSON.stringify(todasTarefas))
   }
 
   function excluir(item: string) {
     const excluirTarefa = tarefas.filter(tarefas => tarefas !== item)
     setTarefas(excluirTarefa)
-    localStorage.setItem("@cursoreact", JSON.stringify(excluirTarefa))
   }
-  
   function editar(item: string) {
+    inputRef.current?.focus();
     setInput(item)
     setEditarTarefa({
       enabled: true,
@@ -230,26 +245,32 @@ export default function App() {
 
   return (
     <Container>
-    <MyForm>
-      <div className="containerDiv">
-        <h1>Lista de tarefas</h1>
+      <Mydiv>
+        <div className="containerDiv">
 
-        <input
-          placeholder="Digite uma tarefa..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button className="btAdd" onClick={registrar}>{editarTarefa.enabled ? "Atualizar tarefa" : "Adicionar Tarefa"}</button>
-        <hr />
+          <h1>Lista de tarefas</h1>
+
+          <input
+            placeholder="Digite uma tarefa..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            ref={inputRef}
+          />
+          <button className="btAdd" onClick={registrar}>{editarTarefa.enabled ? "Atualizar tarefa" : "Adicionar Tarefa"}</button>
+          <hr />
+
+          <text>Você tem <strong>{tarefas.length}</strong> tarefas</text>
+
           {tarefas.map((item) => (
             <section key={item}>
               <span>{item}</span>
               <button className="btDelete" onClick={() => excluir(item)}>Excluir</button>
               <button className="btEdit" onClick={() => editar(item)}>Editar</button>
             </section>
+
           ))}
-      </div>
-    </MyForm>
+        </div>
+      </Mydiv>
     </Container>
   )
 }
